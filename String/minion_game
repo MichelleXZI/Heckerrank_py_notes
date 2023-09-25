@@ -1,7 +1,7 @@
-#1. list all combination in string s
+#1. List all combinations in the string s
 s = "Banana"
 s = s.upper()
-vowels = ['A', 'E', 'I', 'O', 'U']
+vowels = "AEIOU"
 
 comb = []
 n = len(s)
