@@ -1,0 +1,57 @@
+#1. list all combination in string s
+s = "Banana"
+s = s.upper()
+vowels = ['A', 'E', 'I', 'O', 'U']
+
+comb = []
+n = len(s)
+
+for i in range(n):
+      for j in range(i+1, n+1):
+          substring = s[i:j]
+          comb.append(substring)
+print(comb)
+
+# ------
+# 2. counting occurrence of substring begin with vowels and consonants
+
+n = len(s)
+Kevin_count =0
+Stuart_count = 0
+for i in range(n):
+    for j in range(i+1, n+1):
+        if s[i] in vowels:
+            Kevin_count += 1
+        else:
+            Stuart_count += 1
+
+print(Kevin_count)
+print(Stuart_count)
+
+# -------
+# test case 12-14 reached the time limit requirement： Your code did not execute within the time limits. Please optimize your code
+# these cases are ridiculously long :> fine
+
+# final solution:
+
+def minion_game(string):
+    vowels = "AEIOU"
+    n = len(s)
+    Kevin_count = 0
+    Stuart_count = 0
+
+    for i in range(n):
+        if s[i] in vowels: 
+            Kevin_count += (n - i)  # If substring begin with vowels, all scores counted as Kevin to ensure that the score is related to the position of the character and the # of character remaining. 
+        else:                        # If we use Kevincount += 1 here, he only gets one score at a time, reached the time limit 
+            Stuart_count += (n - i)
+
+    if Kevin_count > Stuart_count:
+        print(f"Kevin {Kevin_count}")
+    elif Kevin_count < Stuart_count:
+        print(f"Stuart {Stuart_count}")
+    else:
+        print("Draw")
+
+s = input()
+minion_game(s)
