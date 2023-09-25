@@ -1,0 +1,17 @@
+def merge_the_tools(string, k):
+# 1. len(s)/k substring in k-step
+    substrings = [s[i:i+k] for i in range(0, len(s), k)]
+    
+    for substring in substrings:
+        # uni_s = list(set(substring))
+        # print(''.join(uni_s)) # output in alphabetical order which is not we wanted
+        uni_s = []
+        for char in substring:
+            if char not in uni_s:
+                uni_s += char  # also works: uni_s.append(char) 
+        # print(uni_s)  # processing order
+        print(''.join(uni_s))
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
