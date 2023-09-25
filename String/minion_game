@@ -11,26 +11,30 @@ for i in range(n):
           substring = s[i:j]
           comb.append(substring)
 print(comb)
+# ['B', 'BA', 'BAN', 'BANA', 'BANAN', 'BANANA', 'A', 'AN', 'ANA', 'ANAN', 'ANANA', 'N', 'NA', 'NAN', 'NANA', 'A', 'AN', 'ANA', 'N', 'NA', 'A']
 
 # ------
-# 2. counting occurrence of substring begin with vowels and consonants
+# 2. Counting occurrence of substring begins with vowels and consonants
 
 n = len(s)
 Kevin_count =0
 Stuart_count = 0
 for i in range(n):
-    for j in range(i+1, n+1):
-        if s[i] in vowels:
+      if s[i] in vowels:
             Kevin_count += 1
-        else:
+      else:
             Stuart_count += 1
 
-print(Kevin_count)
-print(Stuart_count)
+    if Kevin_count > Stuart_count:
+        print(f"Kevin {Kevin_count}")
+    elif Kevin_count < Stuart_count:
+        print(f"Stuart {Stuart_count}")
+    else:
+        print("Draw")
 
 # -------
 # test case 12-14 reached the time limit requirement： Your code did not execute within the time limits. Please optimize your code
-# these cases are ridiculously long :> fine
+# These cases are ridiculously long :> fine!
 
 # final solution:
 
@@ -42,7 +46,7 @@ def minion_game(string):
 
     for i in range(n):
         if s[i] in vowels: 
-            Kevin_count += (n - i)  # If substring begin with vowels, all scores counted as Kevin to ensure that the score is related to the position of the character and the # of character remaining. 
+            Kevin_count += (n - i)  # If substring begin with vowels, all scores are counted as Kevin to ensure that the score is related to the position of the character and the # of character remaining. 
         else:                        # If we use Kevincount += 1 here, he only gets one score at a time, reached the time limit 
             Stuart_count += (n - i)
 
