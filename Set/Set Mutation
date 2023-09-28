@@ -1,0 +1,55 @@
+# Two types of solution
+# ----------first solution----------
+_ = int(input())
+## A = set(map(int, input().split())) for A set, this converts the input into a set of integer elements, while b set may contain string elements. 
+## This mismatch in elemts types may lead to unexpected behavior, in this case, causes A set to become an empty set. 
+## Python's set operations require the element types to be the same in both sets, or else you'll get unexpected results. 
+
+A = set(input().split())
+N = int(input())
+
+
+for i in range(N):
+    command = input().split()
+    b = set(input().split())  
+    if command[0] == 'intersection_update':
+        A.intersection_update(b)
+
+    elif command[0] == 'update':
+        A.update(b)
+
+    elif command[0] == 'symmetric_difference_update':
+        A.symmetric_difference_update(b)
+
+    elif command[0] == 'difference_update':
+        A.difference_update(b)
+
+
+print(sum(map(int, A)))
+
+# ------ a more succinct solution-------
+# by using eval(): The eval() function evaluates the specified expression, if the expression is a legal Python statement, it will be executed. 
+# exp.: 
+# x = 'print(55)'
+# eval(x)
+
+_ = int(input())
+A = set(input().split())
+N = int(input())
+
+for i in range(N):
+    command = (input().split())[0]
+    B = set(input().split())
+    eval(f"A.{command}(B)") 
+
+print(sum(map(int, A)))
+
+
+
+
+
+
+
+
+
+
