@@ -1,0 +1,20 @@
+# A test case with an extremely large number of inputs
+K = input()
+mbrs = list(input().split())
+
+room_nbrs = set()  # unique room numbers for each family
+# Even though set(mbrs) returns the same result as room_nbrs after the following for loop,
+# We can't do that because the cap_room variable is stored in both mbrs and room_nbrs.
+# and will be counted as repetitive_roomnbrs
+repetitive_roomnbrs = set()  # room numbers which are occurred repetitive
+
+for i in mbrs:
+    if i in room_nbrs:
+        repetitive_roomnbrs.add(i)
+    else:
+        room_nbrs.add(i)
+
+cap_room = room_nbrs - repetitive_roomnbrs
+
+for i in cap_room:
+    print(i)
