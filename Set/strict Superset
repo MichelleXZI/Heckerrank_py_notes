@@ -1,0 +1,16 @@
+# If A is a strict superset of B is true, 2 conditions must be satisfied: 
+# A.issuperset(B) == True & len(A) > len(B)
+set_A = set(map(int, input().split()))
+n = int(input())
+
+isStrctSuperset = True
+for i in range(n):
+    NewSet = set(map(int, input().split()))
+    if not set_A.issuperset(NewSet):
+        isStrctSuperset = False
+        break
+    elif set_A == NewSet:
+        isStrctSuperset = False
+        break
+
+print(str(isStrctSuperset))
