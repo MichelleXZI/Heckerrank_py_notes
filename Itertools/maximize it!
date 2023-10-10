@@ -1,0 +1,11 @@
+# Modular arithmetic operations (often represented by the "%" symbol) do not satisfy the commutative property in mathematics. 
+# The order of operands affects the final result.
+# Therefore, we can't add up the maximum number of each element in the list then perform modular arithmetic operations.
+
+from itertools import product
+K, M = map(int, input().split())
+
+matrix = [list(map(int, input().split()[1:])) for _ in range(K)]
+cbnt = list(product(*matrix))
+
+print(max(sum(x**2 for x in i) % M for i in cbnt))
