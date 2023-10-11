@@ -1,0 +1,17 @@
+from collections import Counter
+X = int(input())
+sizes = list(map(int, input().split()))
+N = int(input())  # 
+
+stock = Counter(sizes)
+total_earned = 0
+for _ in range(N):
+    size_price = list(map(int, input().split()))
+    cst_size = size_price[0]
+    if stock[cst_size] > 0:  # check whetehr customer desired sizes are in stock
+        total_earned += size_price[1] 
+        stock[cst_size] -= 1
+    else:
+        pass
+
+print(total_earned)
